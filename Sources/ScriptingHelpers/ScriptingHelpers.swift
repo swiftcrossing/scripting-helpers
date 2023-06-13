@@ -4,6 +4,14 @@
 import Foundation
 
 extension String: Error {}
+public extension Result where Success == String, Failure == String {
+  var asString: String {
+    switch self {
+    case let .success(value): return value
+    case let .failure(value): return value
+    }
+  }
+}
 
 @discardableResult
 public func shell(_ command: String) -> Result<String, String> {
