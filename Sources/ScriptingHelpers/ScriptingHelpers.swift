@@ -20,9 +20,9 @@ public func shell(_ command: String) -> Result<String, String> {
 
   let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
   let errorData = errorPipe.fileHandleForReading.readDataToEndOfFile()
-  if let output = String(data: outputData, encoding: .utf8) {
+  if let output = String(data: outputData, encoding: .utf8), !output.isEmpty {
     return .success(output)
-  } else if let error = String(data: errorData, encoding: .utf8) {
+  } else if let error = String(data: errorData, encoding: .utf8), !error.isEmpty {
     return .failure(error)
   }
 
