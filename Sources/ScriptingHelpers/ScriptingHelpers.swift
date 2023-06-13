@@ -28,9 +28,3 @@ public func shell(_ command: String) -> Result<String, String> {
 
   return .failure("Unexpected Error")
 }
-
-public func print(_ message: String, verbose: Bool) {
-  if verbose {
-    print(message)
-  }
-}
